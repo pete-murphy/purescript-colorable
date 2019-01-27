@@ -4,5 +4,5 @@ The goal is to build upon Brent Jackson's [excellent Colorable project](http://j
 
 ## Milestones
 
-* [ ] Set background color from input component.
+* [X] Set background color from input component.
 * [ ] Set background color from imported PureScript module.
