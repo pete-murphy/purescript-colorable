@@ -1,10 +1,11 @@
-import React, { Component } from "react"
+import React from "react"
 import "./App.css"
 
 const App = () => (
-  <div className="app">
-    <h1>Hello</h1>
-  </div>
+  <main>
+    <input type="text" />
+    <button>Submit</button>
+  </main>
 )
 
 export default App
