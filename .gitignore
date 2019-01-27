@@ -5,3 +5,6 @@
 /.psc*
 /.purs*
 /.psa*
+/build/
+*.swp
+*.swo
