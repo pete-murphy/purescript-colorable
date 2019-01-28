@@ -6,6 +6,7 @@
     "prelude",
     "arrays",
     "colors",
+    "foldable-traversable",
     "maybe"
   ]
 }
