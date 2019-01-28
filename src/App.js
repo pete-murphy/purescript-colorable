@@ -1,24 +1,32 @@
 import React, { useState } from "react"
 import "./App.scss"
-import { getLuminance, getContrast } from "./output/Colorable"
+import Section from "./components/Section"
 
 const App = () => {
-  let [{ a, b }, setColor] = useState({ a: "#fff", b: "#ff0" })
+  const [colors, setColors] = useState({
+    a: "#fff",
+    b: "#fc0",
+    text: "#123090"
+  })
+  const { a, b, text } = colors
   const handleChange = key => ({ target: { value } }) => {
-    setColor(colors => ({ ...colors, [key]: value }))
-  }
-  const handleClick = () => {
-    document.documentElement.style.setProperty("--background-color", a)
+    setColors(colors => ({ ...colors, [key]: value }))
   }
 
   return (
     <>
-      <header>{getContrast(a)(b)}</header>
-      <main>
-        <input value={a} onChange={handleChange("a")} type="text" />
-        <input value={b} onChange={handleChange("b")} type="text" />
-        <button onClick={handleClick}>Submit</button>
-      </main>
+      <Section
+        bg={a}
+        textColor={text}
+        handleChange={handleChange("a")}
+        handleTextChange={handleChange("text")}
+      />
+      <Section
+        bg={b}
+        textColor={text}
+        handleChange={handleChange("b")}
+        handleTextChange={handleChange("text")}
+      />
     </>
   )
 }

@@ -7,16 +7,19 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
   padding: 0;
   font-family: var(--main-font);
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
   background: var(--background-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: grid;
+  background: dodgerblue;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100%;
 }
