@@ -1,0 +1,39 @@
+header {
+  font-size: 3rem;
+  font-weight: 800;
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  color: #ffffff99;
+}
+
+$line: 2px solid black;
+@mixin bg {
+  background-color: transparent;
+}
+
+main {
+  display: inline-grid;
+  grid-auto-flow: row;
+  grid-gap: 1rem;
+}
+
+input {
+  @include bg;
+  font-family: var(--mono-font);
+  width: 7ch;
+  border: none;
+  border-bottom: $line;
+  font-size: 1rem;
+  padding: 0.5rem;
+  :focus {
+    background-color: white;
+  }
+}
+
+button {
+  @include bg;
+  border: $line;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
