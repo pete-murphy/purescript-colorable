@@ -8,7 +8,7 @@
     "typeface-roboto-mono": "0.0.54"
   },
   "scripts": {
-    "pscid:build": "pulp build",
+    "pscid:build": "pulp build --build-path src/output",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

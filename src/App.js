@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import "./App.css"
+import { color as c } from "../output/Colorable"
 
 const App = () => {
   const [color, setColor] = useState("#f00")
@@ -10,7 +11,7 @@ const App = () => {
     <main>
       <input
         value={color}
-        onChange={({ target: { value } }) => setColor(value)}
+        onChange={({ target: { value } }) => setColor(c)}
         type="text"
       />
       <button onClick={handleClick}>Submit</button>
