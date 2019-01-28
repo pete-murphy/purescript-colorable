@@ -8,6 +8,7 @@
     "colors",
     "foldable-traversable",
     "maybe",
-    "numbers"
+    "numbers",
+    "psci-support"
   ]
 }
