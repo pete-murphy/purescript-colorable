@@ -3,15 +3,11 @@ module Colorable where
 import Prelude
 
 import Data.Ord (comparing)
-import Color (contrast, fromHexString, rgba, toHexString)
+import Color (contrast, fromHexString, luminance, rgba, toHexString)
 import Data.Foldable (maximumBy)
 import Data.Maybe (maybe)
+import Data.Number.Format (toString)
 
-getContrast :: String -> String -> String
-getContrast s1 s2 = 
-  let result = do
-        c1 <- fromHexString s1
-        c2 <- fromHexString s2
-        pure $ contrast c1 c2
-  in maybe "Invalid input" show result
-  
+getLuminance :: String -> String
+getLuminance s = 
+  maybe "Invalid input" toString (luminance <$> fromHexString s)

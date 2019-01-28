@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import "./App.css"
-import { getContrast } from "./output/Colorable"
+import { getLuminance } from "./output/Colorable"
 
 const App = () => {
-  const [{ a, b }, setColor] = useState({ a: "#fff", b: "#ccc" })
+  const [colors, setColor] = useState({ a: "#fff", b: "#ccc" })
+  const { a, b } = colors
   const handleChange = key => ({ target: { value } }) => {
     setColor(() => ({ [key]: value }))
-    console.log(getContrast(a)(b))
+    console.log(getLuminance(a))
   }
   const handleClick = () => {
     document.documentElement.style.setProperty("--background-color", a)
