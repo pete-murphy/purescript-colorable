@@ -8,5 +8,5 @@ The goal is to build upon Brent Jackson's [excellent Colorable project](http://j
 
 * [X] Set background color from input component.
 * [X] Set background color from imported PureScript module.
-* [ ] Parse input using PureScript
+* [X] Parse input using PureScript
 
