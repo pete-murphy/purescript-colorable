@@ -1,14 +1,14 @@
 import React from "react"
-import { getContrast } from "../output/Colorable"
+import { getContrast, parseColor } from "../output/Colorable"
 
 const style = ({ bg, textColor }) => ({
-  backgroundColor: bg,
-  color: textColor
+  backgroundColor: parseColor(bg),
+  color: parseColor(textColor)
 })
 
 const inputStyle = textColor => ({
-  color: textColor,
-  borderColor: textColor
+  color: parseColor(textColor),
+  borderColor: parseColor(textColor)
 })
 
 const h1Gen = contrast =>
@@ -18,25 +18,18 @@ const h1Gen = contrast =>
       ? `Contrast rating: ${contrast >= 7 ? "AAA" : "AA"}`
       : "Not very good"
 
-export default ({
-  bg,
-  textColor,
-  bgString,
-  textColorString,
-  handleChange,
-  handleTextChange
-}) => (
+export default ({ bg, text: textColor, handleChange, handleTextChange }) => (
   <section style={style({ bg, textColor })}>
     <input
       style={inputStyle(textColor)}
       type="text"
-      value={bgString}
+      value={bg}
       onChange={handleChange}
     />
     <input
       style={inputStyle(textColor)}
       type="text"
-      value={textColorString}
+      value={textColor}
       onChange={handleTextChange}
     />
     <button style={inputStyle(textColor)}>Find optimal</button>
