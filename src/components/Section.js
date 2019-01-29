@@ -18,18 +18,25 @@ const h1Gen = contrast =>
       ? `Contrast rating: ${contrast >= 7 ? "AAA" : "AA"}`
       : "Not very good"
 
-export default ({ bg, textColor, handleChange, handleTextChange }) => (
+export default ({
+  bg,
+  textColor,
+  bgString,
+  textColorString,
+  handleChange,
+  handleTextChange
+}) => (
   <section style={style({ bg, textColor })}>
     <input
       style={inputStyle(textColor)}
       type="text"
-      value={bg}
+      value={bgString}
       onChange={handleChange}
     />
     <input
       style={inputStyle(textColor)}
       type="text"
-      value={textColor}
+      value={textColorString}
       onChange={handleTextChange}
     />
     <button style={inputStyle(textColor)}>Find optimal</button>

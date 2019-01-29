@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import "./App.scss"
 import Section from "./components/Section"
+import { parseColor } from "./output/Colorable"
 
 const App = () => {
   const [colors, setColors] = useState({
@@ -16,14 +17,18 @@ const App = () => {
   return (
     <>
       <Section
-        bg={a}
-        textColor={text}
+        bg={parseColor(a)}
+        textColor={parseColor(text)}
+        bgString={a}
+        textColorString={text}
         handleChange={handleChange("a")}
         handleTextChange={handleChange("text")}
       />
       <Section
-        bg={b}
-        textColor={text}
+        bg={parseColor(b)}
+        textColor={parseColor(text)}
+        bgString={b}
+        textColorString={text}
         handleChange={handleChange("b")}
         handleTextChange={handleChange("text")}
       />
