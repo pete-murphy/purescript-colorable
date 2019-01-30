@@ -12,11 +12,13 @@ const inputStyle = textColor => ({
 })
 
 const h1Gen = contrast =>
-  contrast.includes("Invalid")
+  isNaN(+contrast)
     ? contrast
     : contrast >= 4.5
       ? `Contrast rating: ${contrast >= 7 ? "AAA" : "AA"}`
       : "Not very good"
+
+const bigGen = contrast => (isNaN(+contrast) ? "N/A" : contrast)
 
 export default ({ bg, text: textColor, handleChange, handleTextChange }) => (
   <section style={style({ bg, textColor })}>
@@ -34,7 +36,7 @@ export default ({ bg, text: textColor, handleChange, handleTextChange }) => (
     />
     <button style={inputStyle(textColor)}>Find optimal</button>
     <div className="content">
-      <h2 className="big">{getContrast(bg)(textColor)}</h2>
+      <h2 className="big">{bigGen(getContrast(bg)(textColor))}</h2>
       <div>
         <h2>{h1Gen(getContrast(bg)(textColor))}</h2>
         <p>

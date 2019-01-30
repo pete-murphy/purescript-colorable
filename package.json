@@ -2,7 +2,9 @@
   "name": "purescript-colorable",
   "version": "0.1.0",
   "dependencies": {
+    "colorable": "^1.0.5",
     "decimal.js": "^10.0.2",
+    "jsverify": "^0.8.4",
     "node-sass": "^4.11.0",
     "react": "16.8.0-alpha.1",
     "react-dom": "16.8.0-alpha.1",
