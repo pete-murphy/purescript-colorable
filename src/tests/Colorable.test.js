@@ -1,15 +1,25 @@
-import { property, integer, check, forall } from "jsverify"
+import { property, integer } from "jsverify"
+import colorable from "colorable"
+import { getContrast, rgbToString } from "./../output/Colorable"
 
-const add = (x, y) => x + y
+const toHexString = num => num.toString(16).padStart(2, "0")
+const toColor = nums => `#${nums.map(toHexString).join("")}`
+const _getContrast = (a, b) =>
+  colorable({ a, b }, { compact: true, threshold: 0 })[0].combinations[0]
+    .contrast
 
-describe("add", () => {
-  it("commutatitivity (forall |> check)", () => {
-    check(forall(integer, integer, (a, b) => add(a, b) === add(b, a)))
-  })
+describe("Getting similar results", () => {
   property(
     "commutativity (property)",
-    integer,
-    integer,
-    (a, b) => add(a, b) === add(b, a)
+    integer(0, 255),
+    integer(0, 255),
+    integer(0, 255),
+    (a, b, c) => {
+      const color = toColor([a, b, c])
+      return (
+        Math.abs(getContrast("#fff")(color) - _getContrast("#fff", color)) <
+        0.01
+      )
+    }
   )
 })
