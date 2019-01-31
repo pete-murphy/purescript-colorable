@@ -17,7 +17,7 @@ describe("Getting similar results", () => {
     (a, b, c) => {
       const color = toColor([a, b, c])
       return (
-        Math.abs(getContrast("#fff")(color) - _getContrast("#fff", color)) <
+        Math.abs(getContrast("#000")(color) - _getContrast("#000", color)) <
         0.01
       )
     }
