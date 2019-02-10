@@ -1,23 +1,24 @@
 import { property, integer } from "jsverify"
 import colorable from "colorable"
-import { getContrast, rgbToString } from "./../output/Colorable"
+import { getContrast } from "./../output/Colorable"
 
-const toHexString = num => num.toString(16).padStart(2, "0")
-const toColor = nums => `#${nums.map(toHexString).join("")}`
+const toHexString = num => `#${num.toString(16).padStart(6, "0")}`
 const _getContrast = (a, b) =>
   colorable({ a, b }, { compact: true, threshold: 0 })[0].combinations[0]
     .contrast
 
-describe("Getting similar results", () => {
+const COLOR_RANGE = [0, 256 ** 3 - 1]
+
+describe("contrast implementation", () => {
   property(
-    "commutativity (property)",
-    integer(0, 255),
-    integer(0, 255),
-    integer(0, 255),
-    (a, b, c) => {
-      const color = toColor([a, b, c])
+    "returns similar output to existing library (within 0.01 tolerance)",
+    integer(...COLOR_RANGE),
+    integer(...COLOR_RANGE),
+    (a, b) => {
+      const colorA = toHexString(a)
+      const colorB = toHexString(b)
       return (
-        Math.abs(getContrast("#000")(color) - _getContrast("#000", color)) <
+        Math.abs(getContrast(colorA)(colorB) - _getContrast(colorA, colorB)) <
         0.01
       )
     }
